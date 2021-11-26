@@ -1,6 +1,6 @@
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const divStyle = {
   display: "flex",
@@ -19,10 +19,9 @@ const initData = {
 
 export default function LinkForm() {
   const [data, setData] = useState(initData);
-  // const [click, setClick] = useState(false);
+  const [click, setClick] = useState(1);
 
   const handleSubmit = () => {
-    alert("Alright!, Just be relax now! I will join your meet.");
     let time = new Date();
     let realTime = time.toLocaleTimeString().split(":").join(" ").split(" ");
     if (realTime[3] === "PM") {
@@ -33,6 +32,10 @@ export default function LinkForm() {
     if (newTime === checkTime) {
       // console.log(newTime, checkTime);
       window.location.replace(data.link);
+    }
+    if (click) {
+      alert("Alright!, Just be relax now! I will join your meet.");
+      setClick(0);
     }
     setTimeout(handleSubmit, 10000);
   };

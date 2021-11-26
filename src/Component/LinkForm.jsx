@@ -22,6 +22,7 @@ export default function LinkForm() {
   // const [click, setClick] = useState(false);
 
   const handleSubmit = () => {
+    alert("Alright!, Just be relax now! I will join your meet.");
     let time = new Date();
     let realTime = time.toLocaleTimeString().split(":").join(" ").split(" ");
     if (realTime[3] === "PM") {
@@ -30,8 +31,8 @@ export default function LinkForm() {
     let checkTime = realTime.slice(0, 2).join(":");
     let newTime = data.time;
     if (newTime === checkTime) {
-      console.log(newTime, checkTime);
-      window.location.replace("https://rinku-bangale.vercel.app/");
+      // console.log(newTime, checkTime);
+      window.location.replace(data.link);
     }
     setTimeout(handleSubmit, 10000);
   };
@@ -61,16 +62,6 @@ export default function LinkForm() {
         <Button variant="outlined" color="success" onClick={handleSubmit}>
           Submit
         </Button>
-        {/* {click && (
-          <Redirect
-            style={{ display: "none" }}
-            href={data.link}
-            target="_blank"
-            rel="noreferrer"
-          >
-            Redirect
-          </Redirect>
-        )} */}
       </div>
     </>
   );
